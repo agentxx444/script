@@ -1,0 +1,199 @@
+{% if content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="well {% if site['rtl'] %} rtl-content {% endif %}">
+                    {{ content }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1024">
+    <title>Completed Orders</title>
+  <!-- Include jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+        }
+
+        .completed {
+            background-color: #d4edda;
+        }
+
+        /* Circle style for highlighting (pill shape) */
+        .highlight-pill {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 15px;
+            font-weight: bold;
+        }
+
+        /* Status design similar to highlight-pill */
+        .status {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 15px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .status.completed {
+            background-color: #28a745; /* Green */
+        }
+
+        .status.pending {
+            background-color: #ffc107; /* Yellow */
+            color: #212529; /* Dark text for readability */
+        }
+
+        .status.cancelled {
+            background-color: #dc3545; /* Red */
+        }
+
+        #searchBox {
+            margin-bottom: 15px;
+            padding: 10px;
+            width: calc(100% - 120px);
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        #searchButton {
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+
+        #searchButton:hover {
+            background-color: #0056b3;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .pagination button {
+            padding: 10px 15px;
+            margin: 0 5px;
+            border: 1px solid #ddd;
+            background-color: #f2f2f2;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .pagination button:disabled {
+            background-color: #e9ecef;
+            cursor: not-allowed;
+        }
+
+        #homeButton {
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #homeButton:hover {
+            background-color: #0056b3;
+        }
+
+        .total-charge {
+            font-weight: bold;
+            color: #007bff;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Users Completed Orders</h1>
+    <h5>
+        This will allow you to see the latest completed orders of a specific service. It will help you identify if this
+        service is fast or slow, service ID is the first number before the service name.
+    </h5>
+    <h6>- Search Service ID, to see service order history</h6>
+
+    <!-- Home button -->
+    <button id="homeButton" onclick="window.location.href='/completedorders'">Home</button>
+
+    <!-- Search input and button -->
+    <div style="display: flex;">
+        <input type="text" id="searchBox" placeholder="Enter Service ID">
+        <button id="searchButton" onclick="handleSearch()">Search</button>
+    </div>
+
+    <table id="ordersTable">
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Order Created</th>
+                <th>ID - Service Name</th>
+              	<th>Completed In</th>
+                <th>Quantity</th>
+                <th>Total Charge</th>
+                <th>Average Time</th> <!-- Average Time column after Total Charge -->
+                <th>Status</th> <!-- Status column is now the last one -->
+            </tr>
+        </thead>
+
+        <tbody>
+            <!-- Rows will be inserted here by JavaScript -->
+        </tbody>
+    </table>
+
+    <!-- Pagination controls -->
+    <div class="pagination">
+        <button id="prevPage" onclick="changePage(-1)" disabled>Previous</button>
+        <button id="nextPage" onclick="changePage(1)" disabled>Next</button>
+    </div>
+<script src="https://raw.githubusercontent.com/agentxx444/script/refs/heads/main/script.js"></script>
+</body>
+
+</html>
