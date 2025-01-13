@@ -200,7 +200,7 @@
         let currentServiceId = '';
 
         async function fetchOrders(serviceId = '', page = 1) {
-            const apiKey = 'snmry9aane8xjag9q0gsssfx3y1byy9wea44dm6jb0fek9y0yzy3627s0x63kmgu'; 
+            const apiKey = 'uu3cpq260ogac4ll2r2x0303tc4cab3ioew3tj756gwh2mpa1siqudptsysrooe8'; 
             const url = `https://trendspherepro.com/adminapi/v2/orders?service_ids=${serviceId}&order_status=completed&sort=date-desc&limit=${ordersPerPage}&offset=${(page - 1) * ordersPerPage}`;
 
             try {
@@ -307,7 +307,7 @@ function calculateTimeDifference(startDate, endDate) {
 
 // Function to fetch the last_update of an order using its ID
 async function fetchLastUpdate(orderId) {
-    const apiKey = 'snmry9aane8xjag9q0gsssfx3y1byy9wea44dm6jb0fek9y0yzy3627s0x63kmgu';
+    const apiKey = 'uu3cpq260ogac4ll2r2x0303tc4cab3ioew3tj756gwh2mpa1siqudptsysrooe8';
     const url = `https://trendspherepro.com/adminapi/v2/orders/${orderId}`;
 
     try {
