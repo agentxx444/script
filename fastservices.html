@@ -201,7 +201,9 @@
 
         async function fetchOrders(serviceId = '', page = 1) {
             const apiKey = 'uu3cpq260ogac4ll2r2x0303tc4cab3ioew3tj756gwh2mpa1siqudptsysrooe8'; 
+            const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
             const url = `https://trendspherepro.com/adminapi/v2/orders?service_ids=${serviceId}&order_status=completed&sort=date-desc&limit=${ordersPerPage}&offset=${(page - 1) * ordersPerPage}`;
+            const url = `${proxyUrl}${apiUrl}`;
 
             try {
                 const response = await fetch(url, {
